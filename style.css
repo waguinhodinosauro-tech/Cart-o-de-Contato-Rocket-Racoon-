@@ -1,0 +1,453 @@
+/* ==================================
+   PALETA DE CORES
+   ==================================
+
+   Cinza metálico:
+   HEX: #242A33
+   RGB: rgb(36, 42, 51)
+   HSL: hsl(216, 17%, 17%)
+
+   Branco:
+   HEX: #F4F7FA
+   RGB: rgb(244, 247, 250)
+   HSL: hsl(210, 33%, 97%)
+
+   Preto:
+   HEX: #080B10
+   RGB: rgb(8, 11, 16)
+   HSL: hsl(216, 33%, 5%)
+
+   Ciano neon:
+   HEX: #00F5FF
+   RGB: rgb(0, 245, 255)
+   HSL: hsl(182, 100%, 50%)
+
+   Variações HSL:
+   hsl(182, 100%, 30%) = ciano escuro
+   hsl(182, 100%, 50%) = ciano principal
+   hsl(182, 100%, 75%) = ciano claro
+*/
+
+
+/* ==================================
+   CONFIGURAÇÕES GERAIS
+   ================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --fundo: #080B10;
+    --cartao: #171D26;
+    --cinza: #242A33;
+    --branco: #F4F7FA;
+
+    --neon: hsl(182, 100%, 50%);
+    --neon-escuro: hsl(182, 100%, 30%);
+    --neon-claro: hsl(182, 100%, 75%);
+}
+
+body {
+    min-height: 100vh;
+    padding: 40px 16px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(0, 245, 255, 0.10),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 85% 80%,
+            rgba(0, 245, 255, 0.07),
+            transparent 25%
+        ),
+        var(--fundo);
+
+    color: var(--branco);
+    font-family: Arial, sans-serif;
+}
+
+
+/* ==================================
+   CARTÃO PRINCIPAL
+   ================================== */
+
+.cartao {
+    width: 100%;
+    max-width: 1000px;
+
+    background: rgba(23, 29, 38, 0.96);
+
+    border: 1px solid rgba(0, 245, 255, 0.35);
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 0 35px rgba(0, 245, 255, 0.08),
+        0 25px 70px rgba(0, 0, 0, 0.45);
+}
+
+
+/* ==================================
+   CABEÇALHO
+   ================================== */
+
+.cabecalho {
+    min-height: 55px;
+    padding: 16px 28px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+
+    background: rgba(0, 0, 0, 0.3);
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+}
+
+.status {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    color: var(--neon);
+}
+
+.ponto {
+    width: 8px;
+    height: 8px;
+
+    background: var(--neon);
+    border-radius: 50%;
+
+    box-shadow: 0 0 12px var(--neon);
+}
+
+.codigo {
+    color: rgba(244, 247, 250, 0.45);
+}
+
+
+/* ==================================
+   ÁREA DO PERFIL
+   ================================== */
+
+.perfil {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 35px;
+
+    padding: 35px;
+}
+
+
+/* ==================================
+   IMAGEM DO PERSONAGEM
+   ================================== */
+
+.imagem {
+    position: relative;
+    min-width: 0;
+}
+
+.moldura {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+    min-height: 400px;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(0, 245, 255, 0.15),
+            rgba(36, 42, 51, 0.5) 50%,
+            #080B10
+        );
+
+    border: 1px solid rgba(0, 245, 255, 0.4);
+    border-radius: 12px;
+}
+
+.moldura::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            0deg,
+            rgba(8, 11, 16, 0.65),
+            transparent 45%
+        );
+
+    pointer-events: none;
+}
+
+.moldura img {
+    width: 100%;
+    height: 100%;
+
+    min-height: 400px;
+
+    display: block;
+    object-fit: cover;
+
+    transition: transform 0.5s ease;
+}
+
+.moldura:hover img {
+    transform: scale(1.04);
+}
+
+.etiqueta {
+    position: absolute;
+    bottom: 18px;
+    left: 18px;
+    z-index: 1;
+
+    padding: 8px 12px;
+
+    background: rgba(8, 11, 16, 0.8);
+    border: 1px solid var(--neon);
+
+    color: var(--neon);
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+}
+
+
+/* ==================================
+   NOME E IDENTIDADE
+   ================================== */
+
+.dados {
+    min-width: 0;
+}
+
+.subtitulo {
+    margin-bottom: 8px;
+
+    color: var(--neon);
+    font-size: 0.7rem;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+h1 {
+    font-family: "Libre Caslon Condensed", serif;
+    font-size: clamp(3.5rem, 7vw, 5.8rem);
+    font-weight: 600;
+    line-height: 0.9;
+
+    margin-bottom: 18px;
+}
+
+h1 span {
+    color: var(--neon);
+    font-weight: 400;
+}
+
+.frase {
+    color: rgba(244, 247, 250, 0.65);
+    font-size: 0.9rem;
+    font-style: italic;
+}
+
+.divisor {
+    width: 70px;
+    height: 3px;
+
+    margin: 24px 0;
+
+    background: var(--neon);
+
+    box-shadow: 0 0 12px rgba(0, 245, 255, 0.5);
+}
+
+
+/* ==================================
+   INFORMAÇÕES
+   ================================== */
+
+.informacoes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.info {
+    min-width: 0;
+    padding: 15px;
+
+    background: rgba(0, 0, 0, 0.25);
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-left: 2px solid var(--neon-escuro);
+
+    transition:
+        border-color 0.3s ease,
+        background 0.3s ease;
+}
+
+.info:hover {
+    background: rgba(0, 245, 255, 0.06);
+    border-left-color: var(--neon);
+}
+
+.rotulo {
+    display: block;
+    margin-bottom: 9px;
+
+    color: var(--neon-claro);
+
+    font-size: 0.65rem;
+    letter-spacing: 1.5px;
+}
+
+.info h2 {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    font-weight: 500;
+
+    overflow-wrap: anywhere;
+}
+
+
+/* ==================================
+   HABILIDADES
+   ================================== */
+
+.habilidades {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    margin-top: 22px;
+}
+
+.habilidades span {
+    padding: 8px 10px;
+
+    background: rgba(0, 245, 255, 0.07);
+    border: 1px solid rgba(0, 245, 255, 0.2);
+    border-radius: 4px;
+
+    color: var(--neon-claro);
+
+    font-size: 0.6rem;
+    letter-spacing: 1px;
+}
+
+
+/* ==================================
+   RODAPÉ
+   ================================== */
+
+.rodape {
+    padding: 20px 28px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+
+    background: rgba(0, 0, 0, 0.35);
+
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.rodape-titulo {
+    color: var(--neon);
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+}
+
+.rodape p {
+    margin-top: 7px;
+
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+}
+
+.assinatura {
+    color: rgba(244, 247, 250, 0.4);
+    font-size: 0.6rem;
+    letter-spacing: 1px;
+    text-align: right;
+}
+
+
+/* ==================================
+   RESPONSIVIDADE
+   ================================== */
+
+@media (max-width: 700px) {
+
+    body {
+        padding: 20px 12px;
+    }
+
+    .perfil {
+        grid-template-columns: 1fr;
+        padding: 22px;
+        gap: 28px;
+    }
+
+    .moldura {
+        height: 340px;
+        min-height: 0;
+    }
+
+    .moldura img {
+        height: 340px;
+        min-height: 0;
+    }
+
+    h1 {
+        font-size: 4rem;
+    }
+
+    .cabecalho {
+        padding: 15px;
+        font-size: 0.58rem;
+        letter-spacing: 1px;
+    }
+
+    .rodape {
+        padding: 18px;
+        align-items: flex-start;
+    }
+
+    .rodape p {
+        line-height: 1.6;
+    }
+}
+
+@media (max-width: 400px) {
+
+    .informacoes {
+        grid-template-columns: 1fr;
+    }
+
+    .assinatura {
+        max-width: 100px;
+        line-height: 1.6;
+    }
+}
